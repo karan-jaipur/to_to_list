@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple To-Do List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-image: url('https://images.pexels.com/photos/583475/pexels-photo-583475.jpeg?auto=compress&cs=tinysrgb&w=600');
+      background-size: cover;
+      margin: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      align-items: center;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #container {
+      width: 500px;
+      height: 680px;
+      background-color: rgba(255, 255, 227, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #inpu,
+    #new1inpudata {
+      margin-top: 20px;
+    }
+
+    #new1inpudata {
+      width: 500px;
+      height: 400px;
+      padding: 20px;
+      background-image: url('https://images.pexels.com/photos/268349/pexels-photo-268349.jpeg?auto=compress&cs=tinysrgb&w=600');
+      background-size: cover;
+      background-position: center;
+      padding: 10px;
+      background-repeat: no-repeat;
+      align-items: center;
+      border-radius: 10px;
+      color: #4CAF50;
+      /* overflow:hidden; */
+      overflow: scroll;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    .mainnnnn{
+      background-image: url('https://images.pexels.com/photos/885021/pexels-photo-885021.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+
+      /* background-image: url('http://getwallpapers.com/wallpaper/full/a/b/4/891455-wallpaper-of-study-2560x1440-for-hd-1080p.jpg'); */
+      background-size: cover;
+      padding: 10px;
+      background-repeat: no-repeat;
+      align-items: center;
+      border-radius: 10px;
+    }
+
+    #new1inpudata::-webkit-scrollbar {
+      /* display: none; */
+      width: 12px;
+
+
+    }
+
+    #new1inpudata::-webkit-scrollbar-thumb {
+      background: linear-gradient(transparent, #30ff30);
+      border-radius: 6px;
+
+
+    }
+
+    #new1inpudata::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(transparent, #180fb8);
+
+
+
+    }
+
+    .task {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      margin: 5px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-image: url('https://wallpapercave.com/wp/wp8930684.jpg');
+      color: #4CAF50;
+      background-size: cover;
+      background-repeat: no-repeat;
+      align-items: center;
+      color: white;
+    }
+
+    .completed {
+      text-decoration: line-through;
+      color: #e90909;
+      font-size: 22px;
+    }
+
+    .onetwo {
+      width: 100px;
+      height: 35px;
+      border-radius: 10px;
+      background-color: black;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      
+      color: #4CAF50;
+      font-size: 22px;
+    }
+
+    .onetwo:hover {
+
+      background-color: rgb(255, 247, 247);
+
+      color: #ee0a0a;
+
+      border: 3px solid #4CAF50;
+    }
+
+    .two:hover {
+      border: 3px solid #4CAF50;
+
+
+      color: #4CAF50;
+
+    }
+
+    .two {
+      width: 300px;
+      height: 30px;
+      border-radius: 4px;
+      background-color: black;
+      color: #4CAF50;
+      font-size: 20px;
+      border: 2px solid rgb(92, 13, 13);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="container">
+   <div class="mainnnnn">
+    <h1 style="color: #000000;">LIST</h1>
+    <div>
+      <input class="two" type="text" id="inpu" placeholder="Enter here...">
+      <button class="onetwo" onclick="newdata()">ENTER</button>
+    </div>
+   </div>
+
+    <div id="new1inpudata"></div>
+
+  </div>
+
+  <script>
+    const newdata = () => {
+      const inpu = document.getElementById('inpu');
+      const TEXT = inpu.value.trim();
+      if (TEXT === "") return alert("Please enter a task!");
+      const taskDiv = document.createElement('div');
+      taskDiv.className = 'task';
+      taskDiv.innerHTML = `<span style=" color:  #4CAF50;"><button onclick="completed(this)"> <input type="checkbox"></button>
+            <span class="TEXT">${TEXT}</span></span>
+  <button onclick="DELET(this)"><i class="fa-solid fa-trash"></i></button>`;
+      document.getElementById('new1inpudata').appendChild(taskDiv);
+      inpu.value = "";
+    };
+
+    const completed = (button) => {
+      button.parentNode.querySelector('.TEXT').classList.toggle('completed');
+    };
+
+    const DELET = (button) => {
+      document.getElementById('new1inpudata').removeChild(button.parentNode);
+    };
+  </script>
+
+</body>
+
+</html>
